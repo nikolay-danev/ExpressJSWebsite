@@ -1,0 +1,40 @@
+{
+    "currentIndex": 5,
+    "entities": [
+        {
+            "id": 1,
+            "name": "Gosho",
+            "description": "ase",
+            "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71qZ%2BDsFRQL._SL1500_.jpg",
+            "difficultyLevel": "1"
+        },
+        {
+            "id": 2,
+            "name": "petran33",
+            "description": "petrancho",
+            "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71qZ%2BDsFRQL._SL1500_.jpg",
+            "difficultyLevel": "1"
+        },
+        {
+            "id": 3,
+            "name": "Brat Pit",
+            "description": "Mn qk kub",
+            "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71qZ%2BDsFRQL._SL1500_.jpg",
+            "difficultyLevel": "5"
+        },
+        {
+            "id": 4,
+            "name": "ase",
+            "description": "eeee",
+            "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71qZ%2BDsFRQL._SL1500_.jpg",
+            "difficultyLevel": "3"
+        },
+        {
+            "id": 5,
+            "name": "Mirko",
+            "description": "nai-hubavoto kubhe",
+            "imageUrl": "https://scontent.fsof8-1.fna.fbcdn.net/v/t1.0-9/71461173_1336199926556964_6561730410672291840_n.jpg?_nc_cat=110&_nc_oc=AQnQlp5qcQne08BVAzHRGMKKxrKLu6DjB3mhopVU_WdqD6gqBKc06YnxV86YSBw2cRs&_nc_ht=scontent.fsof8-1.fna&oh=0978cc547933ab9fdfbc9d852fce60ba&oe=5DEEF9FE",
+            "difficultyLevel": "4"
+        }
+    ]
+}
