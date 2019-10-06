@@ -1,19 +1,10 @@
 const path = require('path');
-const fs = require('fs');
+const cubesModel = require('../models/cube');
 
-exports.HomePage = function (req, res) {
-    return new Promise((resolve, reject) => {
-        fs.readFile(path.resolve(__basedir, 'config/database.json'), (err, data) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-
-            let cubes = JSON.parse(data).entities;
-            resolve(cubes);
-            res.render(path.join(__basedir, "views/index.hbs"), { cubes });
-        });
-    });
+exports.HomePage = function (req, res, next) {
+    cubesModel.find().then(cubes => {
+        res.render(path.join(__basedir, "views/index.hbs"), { cubes });
+    }).catch(next);
 };
 
 exports.AboutPage = function (req, res) {

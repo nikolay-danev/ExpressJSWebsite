@@ -1,48 +1,23 @@
 const path = require('path');
-const data = require('../config/database');
-const fs = require('fs');
+const cubeModel = require('../models/cube');
+const accessoryModel = require('../models/accessories');
+const mongoose = require('mongoose');
 
 exports.GetInsertCube = function (req, res) {
     res.render(path.join(__basedir, "views/create.hbs"));
 }
 
-exports.InsertCube = function (req, res) {
-    let currentIndex = data.currentIndex + 1;
-    let newCube = { id: currentIndex, ...req.body };
-    let newData = {
-        currentIndex: currentIndex,
-        entities: data.entities.concat(newCube)
-    };
+exports.InsertCube = function (req, res, next) {
+    let newCube = { ...req.body };
 
-    return new Promise((resolve, reject) => {
-        fs.writeFile(path.resolve(__basedir, 'config/database.json'), JSON.stringify(newData), (err) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            this.data = newData;
-            resolve(newCube);
-            res.redirect('/');
-        });
-    });
+    cubeModel.create(newCube).then(() => {
+        res.redirect('/');
+    }).catch(next);
 }
 
-exports.CubeDetails = function (req, res) {
+exports.CubeDetails = function (req, res, next) {
     let id = req.params.id;
-
-    return new Promise((resolve, reject) => {
-        fs.readFile(path.resolve(__basedir, 'config/database.json'), (err, data) => {
-            if (err) { reject(err); return; }
-
-            let cube = JSON.parse(data).entities.filter(x => x.id === +id)[0];
-
-            if (!cube) {
-                res.redirect('/not-found');
-            }
-
-            resolve(cube);
-            res.render(path.join(__basedir, "views/details.hbs"), { cube });
-        });
+    cubeModel.findById(id).populate('accessories').exec((err, cube) => {
+        res.render(path.join(__basedir, "views/details.hbs"), { cube });
     });
-
 }
